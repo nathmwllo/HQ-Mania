@@ -5,16 +5,11 @@ $usuario = "root";
 $senha = "";
 $banco = "hq_mania";
 
-$conn = new mysqli(
-    $servidor,
+$pdo = new PDO(
+    "mysql:host=$servidor;dbname=$banco;charset=utf8mb4",
     $usuario,
-    $senha,
-    $banco
+    $senha
 );
 
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
-
-$conn->set_charset("utf8mb4");
+$pdo->setAttribute( PDO:: ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
